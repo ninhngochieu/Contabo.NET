@@ -16,7 +16,6 @@ COPY ["Contabo.NET/Contabo.NET.csproj", "Contabo.NET/"]
 RUN dotnet restore "./Contabo.NET/Contabo.NET.csproj"
 COPY . .
 WORKDIR "/src/Contabo.NET"
-RUN dotnet dev-certs https
 RUN dotnet build "./Contabo.NET.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
@@ -27,6 +26,5 @@ RUN dotnet publish "./Contabo.NET.csproj" -c $BUILD_CONFIGURATION -o /app/publis
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
-COPY --from=build /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Contabo.NET.dll"]
