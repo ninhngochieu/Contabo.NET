@@ -10,4 +10,4 @@ services:
     volumes:
       # - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       # - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
-        - ${HOME}/.dotnet/corefx/cryptography/x509stores/my:/home/app/.aspnet/https:ro
+        - ~/.dotnet/corefx/cryptography/x509stores/my:/home/app/.aspnet/https:ro
