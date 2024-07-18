@@ -1,0 +1,6 @@
+services:
+  contabo.net:
+    image: ${DOCKER_REGISTRY-}contabonet
+    build:
+      context: .
+      dockerfile: Contabo.NET/Dockerfile

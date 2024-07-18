@@ -1,0 +1,6 @@
+@Contabo.NET_HostAddress = http://localhost:5227
+
+GET {{Contabo.NET_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
