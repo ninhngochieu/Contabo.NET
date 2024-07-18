@@ -16,6 +16,7 @@ COPY ["Contabo.NET/Contabo.NET.csproj", "Contabo.NET/"]
 RUN dotnet restore "./Contabo.NET/Contabo.NET.csproj"
 COPY . .
 WORKDIR "/src/Contabo.NET"
+RUN dotnet dev-certs https
 RUN dotnet build "./Contabo.NET.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
